@@ -1,20 +1,29 @@
 import React, { Suspense, useRef } from 'react'
 import { Canvas, useLoader, useFrame } from 'react-three-fiber'
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader'
-import { softShadows, OrbitControls } from "drei";
+import { OrbitControls } from "drei";
 
 import GLBDonut from '../objects/donut/donut.glb'
+
 
 function Donut() {
   const gltf = useLoader(GLTFLoader, GLBDonut)
   // 3D Shape size
-  gltf.scene.scale.set(50,50,50)
+  gltf.scene.scale.set(60,60,60)
 
   const mesh = useRef(null)
   useFrame(() => (mesh.current.rotation.x = mesh.current.rotation.y += 0.01))
 
-  return <primitive object={gltf.scene} ref={mesh} position={[0, 0, 0]}/>
+  // 3D Shadow
+  /*gltf.scene.children.forEach((mesh, i) => {
+       mesh.castShadow = true
+  })*/
+
+  // Render 3D object
+  return <primitive object={gltf.scene} ref={mesh} position={[0, 0, 0]} />
 }
+
+
 
 function Box() {
   return (
@@ -25,13 +34,14 @@ function Box() {
   )
 }
 
+
 function BlenderObject() {
 
   return (
     <>
-      <Canvas 
-        camera={{ position: [-5, 2, 10], fov: 60 }} 
-        shadowMap 
+      <Canvas
+        camera={{ position: [-5, 2, 10], fov: 60 }}
+        shadowMap
         colorManagement>
         <ambientLight intensity={0.3} />
         <spotLight intensity={0.8} position={[300, 300, 400]} />
@@ -55,7 +65,7 @@ function BlenderObject() {
               position={[0, -3, 0]}
               receiveShadow>
               <planeBufferGeometry attach='geometry' args={[100, 100]} />
-              <shadowMaterial attach='material' opacity={0.5} />
+            <shadowMaterial attach='material' opacity={0.3} />
             </mesh>
           </group>
         <Suspense fallback={<Box />}>

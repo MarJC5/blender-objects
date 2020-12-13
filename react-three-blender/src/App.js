@@ -1,5 +1,5 @@
 import React from 'react'
-import './stylesheet/main.scss'
+import './stylesheets/main.scss'
 
 import Header from './components/header'
 import BlenderObject from './components/3DObject'
