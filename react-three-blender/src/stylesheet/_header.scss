@@ -1,0 +1,33 @@
+.main-header {
+  @apply absolute top-0 flex items-center justify-between;
+  margin: 0 auto;
+  padding: 1.0875rem 1.45rem;
+
+  .logo {
+    font-size: 1rem;
+
+    svg {
+      fill: #333;
+      height: 45px;
+      width: 45px;
+    }
+  }
+
+  h4 {
+    margin: 0;
+
+    a {
+      @apply uppercase font-medium flex items-center cursor-pointer;
+
+      span {
+        @apply flex items-center font-medium opacity-75 text-xs;
+      }
+
+      &:hover {
+        span {
+          //color: $primary;
+        }
+      }
+    }
+  }
+}

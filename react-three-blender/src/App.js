@@ -1,13 +1,16 @@
 import React from 'react'
 import './stylesheet/main.scss'
 
+import Header from './components/header'
 import BlenderObject from './components/3DObject'
+import Footer from './components/footer'
 
 function App() {
   return (
     <>
-      <h1 className="main-title text-2xl">Blender objects</h1>
+      <Header/>
       <BlenderObject />
+      <Footer/>
     </>
   )
 }
